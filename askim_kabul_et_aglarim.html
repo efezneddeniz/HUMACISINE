@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bebegime</title>
+
+<style>
+    body{
+        margin:0;
+        font-family:Arial, sans-serif;
+        background:linear-gradient(135deg,#ffd6e7,#fff4c2);
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+    }
+
+    .card{
+        background:white;
+        padding:40px;
+        border-radius:25px;
+        text-align:center;
+        box-shadow:0 10px 30px rgba(0,0,0,0.2);
+        width:550px;
+    }
+
+    h1{
+        color:#ff4f87;
+        font-size:34px;
+    }
+
+    p{
+        color:#444;
+        font-size:20px;
+        margin-bottom:30px;
+        line-height:1.6;
+        font-weight:bold;
+    }
+
+    .buttons{
+        position:relative;
+        height:220px;
+    }
+
+    button{
+        position:absolute;
+        padding:15px 20px;
+        border:none;
+        border-radius:15px;
+        font-size:16px;
+        cursor:pointer;
+        transition:0.25s;
+        max-width:220px;
+    }
+
+    #yesBtn{
+        background:#ff4f87;
+        color:white;
+        left:18%;
+        top:70px;
+    }
+
+    #yesBtn:hover{
+        transform:scale(1.08);
+    }
+
+    #noBtn{
+        background:#ddd;
+        left:62%;
+        top:70px;
+    }
+
+    #result{
+        display:none;
+        margin-top:25px;
+        font-size:42px;
+        color:#ff4f87;
+        font-weight:bold;
+        animation:pop 0.6s ease;
+    }
+
+    @keyframes pop{
+        from{
+            transform:scale(0.4);
+            opacity:0;
+        }
+        to{
+            transform:scale(1);
+            opacity:1;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>askim ne sececegimi biliyorsun </h1>
+
+    <p>
+        askim bennemi geliyosub piknige <br>
+        yoksa cisli kakali arkadaslarinlami gideceksin 😡
+    </p>
+
+    <div class="buttons" id="buttonArea">
+        <button id="yesBtn">evet tabii ki de askimma gitcem</button>
+        <button id="noBtn">cisliyim</button>
+    </div>
+
+    <div id="result">
+        yeuyeuyeuyueuyeuyue
+    </div>
+
+</div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const result = document.getElementById("result");
+const area = document.getElementById("buttonArea");
+
+function kacirButon() {
+
+    const maxX = area.clientWidth - noBtn.offsetWidth;
+    const maxY = area.clientHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+noBtn.addEventListener("mouseover", () => {
+    kacirButon();
+});
+
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    kacirButon();
+});
+
+yesBtn.addEventListener("click", () => {
+
+    noBtn.style.display = "none";
+
+    result.style.display = "block";
+
+    yesBtn.style.transform = "scale(1.2)";
+});
+
+</script>
+
+</body>
+</html> 
